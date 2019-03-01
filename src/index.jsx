@@ -19,7 +19,7 @@ class App extends React.Component {
    		)
 
  }
- minus(){this.setState(
-   			counter:this.state.counter - 1)};
+ minus(){this.setState({
+   			counter:this.state.counter - 1})};
 }
-ReactDOM.render(<App />, document.getElementById('root'));
+ReactDOM.render(<App/>, document.getElementById('root'));
