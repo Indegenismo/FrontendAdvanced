@@ -14,7 +14,7 @@ class App extends React.Component {
    		<div>
    		<button onClick={() => this.minus()}>Minus</button>
    		<span> {''}{this.state.counter}{''}</span>
-   		<button onClick={() => this.setState({conter:this.state.counter+1})}>Plus</button>
+   		<button onClick={() => this.setState({counter:this.state.counter + 1})}>Plus</button>
    		</div>
    		)
 
