@@ -34,13 +34,13 @@ class Add extends React.Component {
    		<button onClick={() => this.minus()}>Minus</button>
    		<span> {''}{this.state.counter}{''}</span>
    		<button onClick={() => this.setState({counter:this.state.counter + 1})}>Plus</button>
-		    <div>
+		   
 		   <form className ="Add" onSubmit={this.onSubmit}>
 		   <input value ={this.state.term} onChange={this.onChange}></input>
 		   <button>Submit</button>
 		   </form>
 		   <List items={this.state.items}/>
-	   		</div> 
+	   		
    		</div>
 		  
    		)
