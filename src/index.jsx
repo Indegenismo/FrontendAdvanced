@@ -13,6 +13,7 @@ class App extends React.Component {
 			counter:0,
 			term: '',
 			items:[],
+			bg:[],
 			list:[
 				{name:'aaa',color:'red' },
 			  {name:'bbb',color:'green', bold:true}]
@@ -24,6 +25,9 @@ class App extends React.Component {
 	this.onChange = this.onChange.bind(this);
     this.onSubmit = this.onSubmit.bind(this);
 	}	
+	newMove(){
+		this.game.movexKub()
+	}
 	newColor(){
 		this.game.changeColor();
 	}
@@ -62,8 +66,9 @@ class App extends React.Component {
 		   </form>
 		   <List items={this.state.items}/>
 	   		
-			 <button onClick={()=>this.newColor()}> New color</button>
+			  <button onClick={()=>this.newColor()}> New color</button>
 				<button onClick ={()=>this.playGame()}>Play</button><br></br>
+				<button onClick={()=>this.newMove()}> New Move</button>
 				 <br></br>
    		</div>
 		  

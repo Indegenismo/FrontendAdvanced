@@ -1,6 +1,5 @@
 import { GameItemCtrl } from "./GameItem/GameitemCtrl.js";
 
-
 export class Game {
     
     constructor(){
@@ -11,20 +10,33 @@ export class Game {
         this.canvas.height = 300;
         
         this.items=[];
-        this.items.push(new GameItemCtrl('red', [0,0,10,10]))
+        this.bg=[];
+        this.items.push(new GameItemCtrl('red', [10,0,60,60]))
+        this.bg.push(new GameItemCtrl('yellow',[0,0,60,60]))
         this.draw();
         
     }
-
+    movexKub(){
+       this.bg.forEach((item)=>item.moveX())
+    }
     changeColor(){
-        // const color = Math.floor(Math.random()*1000000);
+        
         this.items.forEach((item) => item.setNewColor())
     }
+  
+    
     draw(){
+        
         this.ctx.clearRect(0,0,300,300);
-        this.items.forEach((item)=>item.animate(this.ctx));
-        
-        
+        this.items.forEach((item)=>item.snake(this.ctx));
+        this.bg.forEach((item)=>item.kube(this.ctx))
+        // let x=10;
+        // let y=10;
+        // this.ctx.fillStyle = "green";
+        // this.ctx.fillRect(x,y,30,30);
+        // x +=1;
+        // y=y+1
         requestAnimationFrame(()=>this.draw())
     }
+    
 }
