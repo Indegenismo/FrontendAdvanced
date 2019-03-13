@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/Indegenismo/FrontendAdvanced#readme",
   "dependencies": {
+    "javascript-state-machine": "^3.1.0",
     "react": "^16.8.3",
     "react-dom": "^16.8.3"
   },

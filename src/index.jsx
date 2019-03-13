@@ -8,7 +8,7 @@ import {Game} from './game/Game.js';
 class App extends React.Component {
 	constructor(props, state){
 		super(props,state);
-		// this.game = new Game();
+		this.game = new Game();
 		this.state={
 			counter:0,
 			term: '',
@@ -31,9 +31,9 @@ class App extends React.Component {
 	newColor(){
 		this.game.changeColor();
 	}
-	playGame(){
-			this.game = new Game()
-	}
+	// playGame(){
+	// 		this.game = new Game()
+	// }
   onChange ()  {
     this.setState({term:event.target.value})
   }

@@ -1,27 +1,35 @@
 import {GameItemModel} from './GameItemModel'
-import {GameItemVue} from './GameItemVue'
+import {GameItemView} from './GameItemVue'
+import {Ctrl} from "../mvc/Ctrl";
+export class GameItemCtrl extends Ctrl {
+    constructor(type) {
+        super(new GameItemModel(), new GameItemView());
 
-export class GameItemCtrl{
-    constructor(type,position){
+        this.model.setType(type);
+    }
         
-            this.model = new GameItemModel();
-            this.position = new GameItemModel();
-            this.Vue = new GameItemVue(this.model);
-            this.model.setType(type);
-            this.position.setPosition(position)
+    setNewColor(){
+        this.model.setRandomColor();
+    }
+    animate(ctx) {
+        super.animate(ctx);
+ 
+        if (this.model.isWin()) {
+            this.model.setDefaultValues();
         }
-        
-        setNewColor(){
-            this.model.setRandomColor();
+     }
+    moveUp(){
+         this.model.moveUp();
+    }
+    moveDown(){
+        this.model.moveDown()
+    }
+    animate(ctx) {
+        super.animate(ctx);
+ 
+        if (this.model.isWin()) {
+            this.model.setDefaultValues();
         }
-        snake(ctx){
-           this.Vue.snake(ctx);
-    }
-    moveX(){
-         this.position.moveKube();
-    }
-    kube(ctx){
-        this.Vue.kube(ctx);
-    }
+     }
     
 }

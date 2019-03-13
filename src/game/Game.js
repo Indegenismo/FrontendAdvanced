@@ -1,5 +1,11 @@
-import { GameItemCtrl } from "./GameItem/GameitemCtrl.js";
-
+import { GameItemCtrl } from "./GameItem/GameitemCtrl";
+import {BgCtrl} from "./bg/bgCtrl";
+var keys = {
+    W: false,
+    S: false,
+    UP: false,
+    DOWN: false
+};
 export class Game {
     
     constructor(){
@@ -8,13 +14,40 @@ export class Game {
         this.ctx = this.canvas.getContext('2d');
         this.canvas.width = 300;
         this.canvas.height = 300;
-        
         this.items=[];
-        this.bg=[];
-        this.items.push(new GameItemCtrl('red', [10,0,60,60]))
-        this.bg.push(new GameItemCtrl('yellow',[0,0,60,60]))
-        this.draw();
         
+        this.mainCharacter = new GameItemCtrl('red', [0, 0, 10, 10]);
+        this.bg = new BgCtrl();
+        this.items.push(...[this.mainCharacter, this.bg]);
+        
+ 
+        this.items.push(this.mainCharacter)
+        this.draw();
+        // Key Codes
+        var W = 87;
+        var S = 83;
+
+        // Keep track of pressed keys
+
+        // Listen for keydown events
+        document.addEventListener('keydown', function(e) {
+            if (e.keyCode === W) {
+                keys.W = true;
+            }
+            if (e.keyCode === S) {
+                keys.S = true;
+            }
+        });
+
+        // Listen for keyup events
+        document.addEventListener('keyup', function(e) {
+            if (e.keyCode === W) {
+                keys.W = false;
+            }
+            if (e.keyCode === S) {
+                keys.S = false;
+            }
+        });
     }
     movexKub(){
        this.bg.forEach((item)=>item.moveX())
@@ -23,13 +56,21 @@ export class Game {
         
         this.items.forEach((item) => item.setNewColor())
     }
-  
+    
     
     draw(){
-        
+        if (keys.W) {
+            this.mainCharacter.moveUp();
+        }
+        if (keys.S) {
+            this.mainCharacter.moveDown();
+        }
+        if (this.mainCharacter.model.isWin()) {
+            this.bg.win();
+        }
         this.ctx.clearRect(0,0,300,300);
-        this.items.forEach((item)=>item.snake(this.ctx));
-        this.bg.forEach((item)=>item.kube(this.ctx))
+        this.items.forEach((item) => item.animate(this.ctx));
+    
         // let x=10;
         // let y=10;
         // this.ctx.fillStyle = "green";
