@@ -5,6 +5,9 @@ import List from './List.jsx';
 import {TodoItem} from './components/Todoitem.jsx';
 import {Game} from './game/Game.js';
 
+
+window.stateMachine = stateMachine;
+
 class App extends React.Component {
 	constructor(props, state){
 		super(props,state);
@@ -47,7 +50,7 @@ class App extends React.Component {
  render() {
    return (
    		<div>
-				 
+				 <input type="text" onChange={(e) =>  this.storeData(e.target.value)}/>
 				 <button onClick={this.addItem.bind(this)}>Add</button>
 				 
 				 <ul>
@@ -75,6 +78,10 @@ class App extends React.Component {
    		)
 
  }
+ storeData(userName) {
+	window.localStorage.setItem('config', JSON.stringify({userName, aaa: 1111}));
+	window.sessionStorage.setItem('config', JSON.stringify({userName, aaa: 1111}));
+}
  addItem(){
 	this.setState({list: [...this.state.list, {name: 'cccc',color:'pink'}]})
  };
