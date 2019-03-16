@@ -4,8 +4,8 @@ import * as ReactDOM from 'react-dom';
 import List from './List.jsx';
 import {TodoItem} from './components/Todoitem.jsx';
 import {Game} from './game/Game.js';
-
-
+import {agent} from "./utils/agent.js";
+import {Players} from "./components/Players.jsx";
 window.stateMachine = stateMachine;
 
 class App extends React.Component {
@@ -50,6 +50,7 @@ class App extends React.Component {
  render() {
    return (
    		<div>
+				 <Players/>
 				 <input type="text" onChange={(e) =>  this.storeData(e.target.value)}/>
 				 <button onClick={this.addItem.bind(this)}>Add</button>
 				 
