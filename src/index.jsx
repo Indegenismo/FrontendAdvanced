@@ -49,14 +49,17 @@ class App extends React.Component {
 	
  render() {
    return (
-   		<div>
+   		<div className="container">
 				 <Players/>
+				 
 				 <input type="text" onChange={(e) =>  this.storeData(e.target.value)}/>
 				 <button onClick={this.addItem.bind(this)}>Add</button>
 				 
 				 <ul>
            {this.state.list.map((item, i) => (
-                   <TodoItem key={i}name={item.name}
+									 <TodoItem key={i}name={item.name}
+									 color={item.color}
+                    bold={item.bold}
                      onRemove={() => this.removeItem(i)}/>
                     ))}
            </ul>

@@ -4,7 +4,7 @@ export class TodoItem extends React.Component {
     render() {
         let color = {'color':this.props.color}
         if(this.props.bold){
-            color['font-weight']= 'bold';
+            color['fontWeight']= 'bold';
         }
         return (
             <li>

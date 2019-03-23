@@ -1,6 +1,6 @@
 import { GameItemCtrl } from "./GameItem/GameitemCtrl";
 import {BgCtrl} from "./bg/bgCtrl";
-import {stateMachine} from "./StateMachine";
+import {stateMachine} from "./StateMachine.js";
 var keys = {
     W: false,
     S: false,
@@ -11,7 +11,7 @@ export class Game {
     constructor() {
         const config = JSON.parse(window.localStorage.getItem('config'));
 
-        console.log(config['userName']);
+        // console.log(config['userName']);
 
         this.canvas = document.getElementById('game');
         this.ctx = this.canvas.getContext('2d');

@@ -1,0 +1,13 @@
+
+#players {   
+          li{
+             color:rgb(204, 37, 37);
+             &:first-child{
+                color: #536d50;
+             }
+             &:last-child{
+                 color: hsla(251, 75%, 39%, 0.63)
+
+             }
+         }
+  }
